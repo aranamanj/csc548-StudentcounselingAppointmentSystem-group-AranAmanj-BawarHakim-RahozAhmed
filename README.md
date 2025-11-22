@@ -64,6 +64,11 @@ A web-based system for managing student counseling appointments at a university.
 - context.xml
 - web-fragment.xml (3 files)
 
+**Miscellaneous Files/**
+-README.md
+-ERD.png
+-schema.sql
+
 
 ## Key Features
 
@@ -93,6 +98,8 @@ A web-based system for managing student counseling appointments at a university.
 ### Session Notes
 - Confidential session documentation
 - Attendance tracking and risk assessment
+
+![Image](ERD.png)
 
 ## Database Schema (4 Tables)
 
