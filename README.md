@@ -1,5 +1,7 @@
 # Student Counseling Appointment System - README
 
+##Git Hub repo: (https://github.com/aranamanj/csc548-StudentcounselingAppointmentSystem-group-AranAmanj-BawarHakim-RahozAhmed)
+
 ## Project Information
 **Title:** Student Counseling Appointment System  
 **Course:** CSC584 - Enterprise Programming
