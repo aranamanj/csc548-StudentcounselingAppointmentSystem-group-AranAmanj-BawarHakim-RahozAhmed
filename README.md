@@ -18,45 +18,51 @@ A web-based system for managing student counseling appointments at a university.
 
 ## File Structure
 
-StudentCounselingAppointmentSystem/
-├── Web Pages/
-│ ├── index.jsp # Main sitemap
-│ ├── META-INF/
-│ │ └── context.xml
-│ ├── WEB-INF/
-│ │ └── test.txt
-│ ├── appointments/
-│ │ ├── create.jsp # Book appointment
-│ │ ├── details.jsp # View appointment
-│ │ ├── edit.jsp # Edit appointment
-│ │ └── list.jsp # All appointments
-│ ├── assets/
-│ │ └── styles.css # Main stylesheet
-│ ├── auth/
-│ │ ├── login.jsp # User login
-│ │ └── register.jsp # Registration
-│ ├── counselors/
-│ │ ├── create.jsp # Add counselor
-│ │ ├── details.jsp # Counselor profile
-│ │ ├── edit.jsp # Edit counselor
-│ │ └── list.jsp # All counselors
-│ ├── dashboard/
-│ │ └── dashboard.jsp # Dashboard with KPIs
-│ ├── sessions/
-│ │ ├── create.jsp # Create session note
-│ │ └── list.jsp # All session notes
-│ └── students/
-│ ├── create.jsp # Add student
-│ └── list.jsp # All students
-├── Source Packages/
-│ └── <default package> # (Servlets to be added)
-├── Libraries/
-│ ├── JDK 24 (Default)
-│ └── Apache Tomcat or TomEE
-└── Configuration Files/
-├── MANIFEST.MF
-├── context.xml
-├── web-fragment.xml (3 files)
+**Web Pages/**
+- index.jsp - Main sitemap
+- META-INF/context.xml
+- WEB-INF/test.txt
+
+**appointments/**
+- create.jsp - Book appointment
+- details.jsp - View appointment
+- edit.jsp - Edit appointment
+- list.jsp - All appointments
+
+**assets/**
+- styles.css - Main stylesheet
+
+**auth/**
+- login.jsp - User login
+- register.jsp - User registration
+
+**counselors/**
+- create.jsp - Add counselor
+- details.jsp - Counselor profile
+- edit.jsp - Edit counselor
+- list.jsp - All counselors
+
+**dashboard/**
+- dashboard.jsp - Dashboard with KPIs
+
+**sessions/**
+- create.jsp - Create session note
+- list.jsp - All session notes
+
+**students/**
+- create.jsp - Add student
+- list.jsp - All students
+
+**Source Packages/** - (Servlets to be added)
+
+**Libraries/**
+- JDK 24 (Default)
+- Apache Tomcat or TomEE
+
+**Configuration Files/**
+- MANIFEST.MF
+- context.xml
+- web-fragment.xml (3 files)
 
 
 ## Key Features
