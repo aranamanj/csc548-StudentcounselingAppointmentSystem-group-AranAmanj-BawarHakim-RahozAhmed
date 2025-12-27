@@ -22,7 +22,7 @@
     
     <nav>
         <a href="list.jsp">← Back to Session Notes</a> | 
-        <a href="../dashboard/dashboard.jsp">Dashboard</a>
+        <a href="<%= request.getContextPath() %>/DashboardServlet">Dashboard</a>
     </nav>
     
     <main>

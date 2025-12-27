@@ -23,7 +23,7 @@
     </header>
     
     <nav>
-        <a href="<%= request.getContextPath() %>/DashboardServlet">← Back to Dashboard</a> | 
+        <a href="<%= request.getContextPath() %>/DashboardServlet">← Back to Dashboard</a>
         <a href="<%= request.getContextPath() %>/LogoutServlet">Logout</a>
     </nav>
     

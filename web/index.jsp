@@ -42,10 +42,10 @@
             
             <h3>Appointments Module (CRUD)</h3>
             <ul>
-                <li><a href="appointments/list.jsp">List All Appointments</a></li>
+                <li><a href="<%=request.getContextPath()%>/appointments/list">List All Appointments</a></li>
                 <li><a href="appointments/create.jsp">Book New Appointment</a></li>
-                <li><a href="appointments/details.jsp">Appointment Details</a></li>
-                <li><a href="appointments/edit.jsp">Edit Appointment</a></li>
+                <li><a href="<%=request.getContextPath()%>/appointments/details?id=1">Appointment Details (Functional - Sample ID 1)</a></li>
+                <li><a href="<%=request.getContextPath()%>/appointments/edit?id=1">Edit Appointment (Functional - Sample ID 1)</a></li>
             </ul>
             
             <h3>Counselors Module</h3>

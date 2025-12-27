@@ -20,9 +20,9 @@
         <p>Purpose: Register a new student to the counseling system</p>
     </header>
     
-    <nav>
-        <a href="list.jsp">← Back to Students</a> | 
-        <a href="../dashboard/dashboard.jsp">Dashboard</a>
+    <nav> 
+        <a href="<%= request.getContextPath() %>/students/list.jsp">← Back to Students</a> | 
+        <a href="<%= request.getContextPath() %>/DashboardServlet">Dashboard</a>
     </nav>
     
     <main>

@@ -21,7 +21,7 @@
     </header>
     
     <nav>
-        <a href="../dashboard/dashboard.jsp">← Back to Dashboard</a> | 
+        <a href="<%= request.getContextPath() %>/DashboardServlet">← Back to Dashboard</a> | 
         <a href="../index.jsp">Sitemap</a>
     </nav>
     
