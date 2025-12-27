@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
+        return;
+    }
+    
+    String userName = (String) session.getAttribute("userName"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +37,7 @@
             
             <h3>Dashboard Module</h3>
             <ul>
-                <li><a href="dashboard/dashboard.jsp">Main Dashboard</a></li>
+                <a href="<%=request.getContextPath()%>/DashboardServlet">Main Dashboard</a>
             </ul>
             
             <h3>Appointments Module (CRUD)</h3>

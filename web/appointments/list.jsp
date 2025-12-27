@@ -1,51 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, com.counseling.model.*" %>
+<%
+    User currentUser = (User) session.getAttribute("user");
+    if (currentUser == null) {
+        response.sendRedirect(request.getContextPath() + "/auth/login.jsp");
+        return;
+    }
+    List<Appointment> appointments = (List<Appointment>) request.getAttribute("appointments");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Appointments - Student Counseling System</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/styles.css">
 </head>
 <body>
     <header>
         <h1>All Appointments</h1>
-        <p>Purpose: View and manage all counseling appointments in the system</p>
+        <p>View and manage counseling appointments</p>
     </header>
     
     <nav>
-        <a href="../dashboard/dashboard.jsp">← Back to Dashboard</a> | 
-        <a href="../index.jsp">Sitemap</a>
+        <a href="<%= request.getContextPath() %>/DashboardServlet">← Back to Dashboard</a> | 
+        <a href="<%= request.getContextPath() %>/LogoutServlet">Logout</a>
     </nav>
     
     <main>
         <section>
             <div class="toolbar">
-                <a href="create.jsp" class="btn-primary">+ Book New Appointment</a>
-                
-                <div class="filters">
-                    <label for="filter-status">Status:</label>
-                    <select id="filter-status">
-                        <option value="all">All</option>
-                        <option value="pending">Pending</option>
-                        <option value="confirmed">Confirmed</option>
-                        <option value="completed">Completed</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                    
-                    <label for="filter-date">Date:</label>
-                    <input type="date" id="filter-date">
-                    
-                    <button class="btn-secondary">Apply Filters</button>
-                </div>
+                <% if ("student".equals(currentUser.getRole()) || "admin".equals(currentUser.getRole())) { %>
+                    <a href="<%= request.getContextPath() %>/appointments/create" class="btn-primary">+ Book New Appointment</a>
+                <% } %>
             </div>
             
-            <h2>Appointments Table [Placeholder]</h2>
+            <h2>Appointments Table</h2>
             <table class="data-table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Student Name</th>
+                        <th>Student</th>
                         <th>Counselor</th>
                         <th>Date & Time</th>
                         <th>Type</th>
@@ -54,29 +49,36 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% if (appointments != null && !appointments.isEmpty()) {
+                        for (Appointment appt : appointments) { %>
                     <tr>
-                        <td>APT001</td>
-                        <td>Sarah Ahmad</td>
-                        <td>Dr. Lee Wei</td>
-                        <td>2025-11-25 10:00 AM</td>
-                        <td>Academic</td>
-                        <td><span class="badge-pending">Pending</span></td>
+                        <td>APT<%= appt.getAppointmentId() %></td>
+                        <td><%= appt.getStudentName() %></td>
+                        <td><%= appt.getCounselorName() %></td>
+                        <td><%= appt.getAppointmentDate() %> <%= appt.getAppointmentTime() %></td>
+                        <td><%= appt.getAppointmentType() %></td>
+                        <td><span class="badge-<%= appt.getStatus() %>"><%= appt.getStatus() %></span></td>
                         <td>
-                            <a href="details.jsp">View</a> | 
-                            <a href="edit.jsp">Edit</a>
+                            <a href="<%= request.getContextPath() %>/appointments/details?id=<%= appt.getAppointmentId() %>">View</a>
+                            <% if ("counselor".equals(currentUser.getRole()) || "admin".equals(currentUser.getRole())) { %>
+                                | <a href="<%= request.getContextPath() %>/appointments/edit?id=<%= appt.getAppointmentId() %>">Edit</a>
+                            <% } %>
+                            <% if ("admin".equals(currentUser.getRole())) { %>
+                                <form action="<%= request.getContextPath() %>/appointments/delete" method="post" style="display:inline;" onsubmit="return confirm('Delete this appointment?');">
+                                    <input type="hidden" name="id" value="<%= appt.getAppointmentId() %>">
+                                    <button type="submit" class="btn-danger" style="padding:4px 8px; font-size:0.9em;">Delete</button>
+                                </form>
+                            <% } %>
                         </td>
                     </tr>
+                    <% }
+                    } else { %>
                     <tr>
-                        <td colspan="7">[Placeholder: More appointment rows will be populated from database]</td>
+                        <td colspan="7" style="text-align:center;">No appointments found.</td>
                     </tr>
+                    <% } %>
                 </tbody>
             </table>
-            
-            <div class="pagination">
-                <button>← Previous</button>
-                <span>Page 1 of 10</span>
-                <button>Next →</button>
-            </div>
         </section>
     </main>
     
