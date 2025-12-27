@@ -15,61 +15,91 @@ A web-based system for managing student counseling appointments at a university.
 - **Frontend:** JSP, HTML5, CSS
 - **Backend:** Java Servlets
 - **Server:** Apache Tomcat
-- **Database:** SQL (to be specified)
+- **Database:** MySQL
 - **IDE:** NetBeans
 
 ## File Structure
 
+**Source Packages/**
+- com.counseling.controller/
+  - AuthFilter.java - Session authentication filter
+  - LoginServlet.java - User authentication
+  - LogoutServlet.java - Session termination
+  - RegisterServlet.java - User registration with validation
+  - DashboardServlet.java - Dashboard with real-time KPIs
+  - appointments/
+    - AppointmentListServlet.java - List all appointments
+    - AppointmentCreateServlet.java - Create new appointment
+    - AppointmentDetailsServlet.java - View appointment details
+    - AppointmentEditServlet.java - Edit appointment
+    - AppointmentDeleteServlet.java - Delete appointment
+
+- com.counseling.dao/
+  - UserDAO.java - User database operations
+  - AppointmentDAO.java - Appointment CRUD operations
+  - CounselorDAO.java - Counselor read operations
+
+- com.counseling.model/
+  - User.java - User entity JavaBean
+  - Appointment.java - Appointment entity JavaBean
+  - Counselor.java - Counselor entity JavaBean
+
+- com.counseling.util/
+  - DBConnection.java - JDBC connection manager
+
 **Web Pages/**
-- index.jsp - Main sitemap
+- index.jsp - Main sitemap (updated with servlet URLs)
 - META-INF/context.xml
-- WEB-INF/test.txt
+- WEB-INF/web.xml - Servlet configuration
+- WEB-INF/lib/mysql-connector-j-8.2.0.jar - JDBC driver
 
 **appointments/**
-- create.jsp - Book appointment
-- details.jsp - View appointment
-- edit.jsp - Edit appointment
-- list.jsp - All appointments
+- create.jsp - Book appointment (updated: servlet integration)
+- details.jsp - View appointment (updated: dynamic data)
+- edit.jsp - Edit appointment (updated: pre-populated form)
+- list.jsp - All appointments (updated: database-driven table)
 
 **assets/**
 - styles.css - Main stylesheet
 
 **auth/**
-- login.jsp - User login
-- register.jsp - User registration
+- login.jsp - User login (updated: LoginServlet integration)
+- register.jsp - User registration (updated: RegisterServlet integration)
 
 **counselors/**
-- create.jsp - Add counselor
-- details.jsp - Counselor profile
-- edit.jsp - Edit counselor
-- list.jsp - All counselors
+- create.jsp - Add counselor (storyboard only)
+- details.jsp - Counselor profile (storyboard only)
+- edit.jsp - Edit counselor (storyboard only)
+- list.jsp - All counselors (storyboard only)
 
 **dashboard/**
-- dashboard.jsp - Dashboard with KPIs
+- dashboard.jsp - Dashboard with KPIs (updated: real-time data from database)
 
 **sessions/**
-- create.jsp - Create session note
-- list.jsp - All session notes
+- create.jsp - Create session note (storyboard only)
+- list.jsp - All session notes (storyboard only)
 
 **students/**
-- create.jsp - Add student
-- list.jsp - All students
+- create.jsp - Add student (storyboard only)
+- list.jsp - All students (storyboard only)
 
-**Source Packages/** - (Servlets to be added)
+**database/**
+- counseling_schema.sql - Complete database schema with sample data
 
 **Libraries/**
-- JDK 24 (Default)
-- Apache Tomcat or TomEE
+- JDK 17+
+- Apache Tomcat 10.1+ or TomEE 9+
+- MySQL Connector/J 8.2.0
+- Jakarta EE 10 Web API
 
 **Configuration Files/**
 - MANIFEST.MF
 - context.xml
-- web-fragment.xml (3 files)
+- web.xml
 
 **Miscellaneous Files/**
--README.md
--ERD.png
--schema.sql
+- README.md
+- ERD.png
 
 
 ## Key Features
